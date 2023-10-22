@@ -1,0 +1,47 @@
+﻿
+
+
+#navigation{
+	width:140px
+}
+
+#navigation table{
+	width:100%
+}
+
+#navigation input{
+	width:100%
+}
+
+#content{
+	background-color:gray;
+}
+
+body{
+	width: 400px;
+	height:400px;
+	background-color: white;
+	background-image: linear-gradient(
+	
+	  45deg,
+      #000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000 75%,
+      #000
+	
+	),
+	linear-gradient(
+	 -45deg,
+      #000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000 75%,
+      #000
+	
+	);
+	
+	background-size : 8px 8px;
+	background-repeat: repeat;
+	
+}

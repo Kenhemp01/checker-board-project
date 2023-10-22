@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+
+<!--
+  COLLABORATORS:
+  
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Checkerboard</title>
+
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="checker.js"></script>
+<script type="text/javascript" src="boardEvent.js"></script>
+<script type="text/javascript" src="board.js"></script>
+
+<script type="text/javascript">
+	var DEFAULT_BOARD_SIZE = 8;
+	
+	var board;
+
+	$(document).ready(function() {
+
+		board = document.getElementById('checker');
+
+
+		board.addEventListener('add', function(e) {
+			
+		}, true);
+
+		board.addEventListener('move', function(e) {
+			
+		}, true);
+
+		board.addEventListener('remove', function(e) {
+			
+		}, true);
+
+		board.addEventListener('promote', function(e) {
+			
+		}, true);
+
+		$("#btnNewGame").click(function(evt) {
+			board.prepareNewGame();
+		});
+
+		$("#btnMoveRandomly").click(function(evt) {
+			randomChecker = board.getRandomChecker();
+			randomLoc = board.getRandomEmptyLocation();
+
+			if (randomChecker && randomLoc) {
+				board.moveTo(randomChecker, randomLoc.row, randomLoc.col);
+			}
+		});
+
+		$("#btnKingRandomly").click(function(evt) {
+
+		});
+
+		$("#btnClear").click(function(evt) {
+			
+			document.getElementById('red1').style.display = 'none';
+
+		});
+
+		board.prepareNewGame();
+	});
+
+
+	$.extend({
+		getUrlVars : function() {
+			var vars = [], hash;
+			var hashes = window.location.href.slice(
+					window.location.href.indexOf('?') + 1).split('&');
+			for (var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+		},
+		getUrlVar : function(name) {
+			return $.getUrlVars()[name];
+		}
+	});
+
+	function removeimg() {
+		document.getElementById('red1').remove();
+		document.getElementById('red2').style.display = 'none';
+		document.getElementById('red3').style.display = 'none';
+		document.getElementById('red4').style.display = 'none';
+		document.getElementById('red5').style.display = 'none';
+		document.getElementById('red6').style.display = 'none';
+		document.getElementById('red7').style.display = 'none';
+		document.getElementById('red8').style.display = 'none';
+		document.getElementById('black1').style.display = 'none';
+		document.getElementById('black2').style.display = 'none';
+		document.getElementById('black3').style.display = 'none';
+		document.getElementById('black4').style.display = 'none';
+		document.getElementById('black5').style.display = 'none';
+		document.getElementById('black6').style.display = 'none';
+		document.getElementById('black7').style.display = 'none';
+		document.getElementById('black8').style.display = 'none';
+	}
+
+	function randomPosition(min, max) {
+
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	var img2 = document.getElementById('red2');
+
+	var options = new Array();
+
+	options[0] = img1;
+	options[1] = img2;
+
+	var choices = [ 'r1', 'r2' ];
+
+	var random = Math.floor(Math.random() * choices.length);
+
+	function move() {
+
+		var img1 = document.getElementById('red1');
+		img1.style.top = "245px";
+		img1.style.left = "350px";
+
+	}
+
+	function move2() {
+
+		var img2 = document.getElementById('red3');
+
+		img2.style.top = "250px";
+		img2.style.left = "475px";
+
+	}
+
+	function move3() {
+
+		var img3 = document.getElementById('black2');
+
+		img3.style.top = "305px";
+		img3.style.left = "475px";
+
+	}
+
+	function move4() {
+		var img4 = document.getElementById('red5');
+
+		img4.style.top = "250px";
+		img4.style.left = "600px";
+	}
+
+	function move5() {
+
+		var img5 = document.getElementById('red7');
+
+		img5.style.top = "250px";
+		img5.style.left = "725px";
+	}
+
+	function move6() {
+		var img6 = document.getElementById('red2');
+
+		img6.style.top = "185px";
+		img6.style.left = "288px";
+
+	}
+
+	function move7() {
+		var img7 = document.getElementById('red2');
+
+		img7.style.top = "185px";
+		img7.style.left = "415px";
+
+	}
+
+	function move8() {
+
+		var img8 = document.getElementById('red4');
+
+		img8.style.top = "185px";
+		img8.style.left = "415px";
+	}
+
+	function move9() {
+		var img9 = document.getElementById('red4');
+
+		img9.style.top = "185px";
+		img9.style.left = "540px";
+
+	}
+
+	function move10() {
+		var img10 = document.getElementById('red6');
+
+		img10.style.top = "185px";
+		img10.style.left = "540px";
+	}
+
+	function move11() {
+		var img11 = document.getElementById('red6');
+
+		img11.style.top = "185px";
+		img11.style.left = "665px";
+
+	}
+
+	function move12() {
+		var img12 = document.getElementById('red8');
+
+		img12.style.top = "185px";
+		img12.style.left = "665px";
+
+	}
+
+	function move13() {
+		var img13 = document.getElementById('black1');
+
+		img13.style.top = "310px";
+		img13.style.left = "350px";
+
+	}
+
+	function move14() {
+		var img14 = document.getElementById('black3');
+
+		img14.style.top = "310px";
+		img14.style.left = "475px";
+	}
+
+	function move15() {
+		var img15 = document.getElementById('black5');
+
+		img15.style.top = "310px";
+		img15.style.left = "600px";
+	}
+
+	function move16() {
+		var img16 = document.getElementById('black7');
+
+		img16.style.top = "310px";
+		img16.style.left = "725px";
+	}
+
+	function h1() {
+
+		var img1 = document.getElementById('red1');
+		var img2 = document.getElementById('red3');
+		var img7 = document.getElementById('red2');
+
+		var img4 = document.getElementById('red5');
+		var img9 = document.getElementById('red4');
+
+		var img5 = document.getElementById('red7');
+
+		var img10 = document.getElementById('red6');
+
+		var i = randomPosition(1, 8);
+
+		if (i == 1) {
+			return move();
+
+		} else if (i == 2) {
+
+			return move2();
+
+		} else if (i == 3) {
+			return move4();
+
+		} else if (i == 4) {
+			return move5();
+		} else if (i == 5 && img1.style.top == "180px") {
+			return move6();
+
+		} else if (i == 5 && img2.style.top == "185px") {
+			return move7();
+
+		} else if (i == 6 && img2.style.top == "185px"
+				&& img7.style.left != "415px") {
+			return move8();
+		} else if (i == 6 && img4.style.top == "185px"
+				&& img10.style.left != "540px") {
+			return move9();
+		} else if (i == 7 && img4.style.top == "185px"
+				&& img9.style.left != "540px") {
+			return move10();
+		} else if (i == 7 && img5.style.top == "175px") {
+			return move11();
+		} else if (i == 8 && img5.style.top == "175px"
+				&& img10.style.left != "665px") {
+			return move12();
+		}
+
+	}
+
+	function h2() {
+
+		var i = randomPosition(1, 4);
+
+		if (i == 1) {
+			return move13();
+
+		}
+		if (i == 2) {
+			return move14();
+		}
+		if (i == 3) {
+			return move15();
+		}
+		if (i == 4) {
+			return move16();
+		}
+	}
+
+	function restart() {
+
+		document.getElementById('red1').style.left = "288px";
+		document.getElementById('red1').style.top = "250px";
+
+		document.getElementById('red2').style.left = "350px";
+		document.getElementById('red2').style.top = "185px";
+
+		document.getElementById('red3').style.left = "415px";
+		document.getElementById('red3').style.top = "250px";
+
+		document.getElementById('red4').style.left = "475px";
+		document.getElementById('red4').style.top = "185px";
+
+		document.getElementById('red5').style.left = "540px";
+		document.getElementById('red5').style.top = "250px";
+
+		document.getElementById('red6').style.left = "600px";
+		document.getElementById('red6').style.top = "185px";
+
+		document.getElementById('red7').style.left = "665px";
+		document.getElementById('red7').style.top = "250px";
+
+		document.getElementById('red8').style.left = "725px";
+		document.getElementById('red8').style.top = "185px";
+
+		document.getElementById('black1').style.left = "288px";
+		document.getElementById('black1').style.top = "495px";
+
+		document.getElementById('black2').style.left = "350px";
+		document.getElementById('black2').style.top = "555px";
+
+		document.getElementById('black3').style.left = "415px";
+		document.getElementById('black3').style.top = "495px";
+
+		document.getElementById('black4').style.left = "475px";
+		document.getElementById('black4').style.top = "555px";
+
+		document.getElementById('black5').style.left = "540px";
+		document.getElementById('black5').style.top = "495px";
+
+		document.getElementById('black6').style.left = "600px";
+		document.getElementById('black6').style.top = "555px";
+
+		document.getElementById('black7').style.left = "665px";
+		document.getElementById('black7').style.top = "495px";
+
+		document.getElementById('black8').style.left = "725px";
+		document.getElementById('black8').style.top = "555px";
+
+	}
+</script>
+
+
+
+
+
+
+</head>
+
+
+<style>
+body {
+	background-color: white;
+}
+
+.checker {
+	background-color: #FFFDD0;
+	width: 500px;
+	height: 430px;
+	position: relative;
+	top: 50px;
+	left: 300px;
+	background-image: linear-gradient(45deg, #C4A484 25%, transparent 25%),
+		linear-gradient(135deg, #C4A484 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, #C4A484 75%),
+		linear-gradient(135deg, transparent 75%, #C4A484 75%);
+	background-size: 125px 125px;
+	background-position: 0 0, 62.5px 0, 62.5px -62.5px, 0px 62.5px;
+	z-index: 1;
+}
+
+#red1 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 288px;
+	top: 250px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red2 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 350px;
+	top: 185px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red3 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 415px;
+	top: 250px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red4 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 475px;
+	top: 185px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red5 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 540px;
+	top: 250px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red6 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 600px;
+	top: 185px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red7 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 665px;
+	top: 250px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#red8 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 725px;
+	top: 185px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black1 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 288px;
+	top: 495px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black2 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 350px;
+	top: 555px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black3 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 415px;
+	top: 495px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black4 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 475px;
+	top: 555px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black5 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 540px;
+	top: 495px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black6 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 600px;
+	top: 555px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black7 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 665px;
+	top: 495px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+
+#black8 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 725px;
+	top: 555px;
+	object-fit: none;
+	object-position: top 400px;
+	z-index: 2;
+}
+</style>
+
+<body>
+
+
+
+	<table id="mainTable">
+		<tr>
+			<td id="navigation">
+				<table>
+					<tr>
+						<td><input onclick="restart()" id="btnNewGame" type="button"
+							name="new" value="New Game" /></td>
+					</tr>
+					<tr>
+						<td><input onclick="h1(), h2()" id="btnMoveRandomly"
+							type="button" name="moveRandomly" value="Move Randomly" /></td>
+					</tr>
+					<tr>
+						<td><input onclick="king()" id="btnKingRandomly"
+							type="button" name="kingRandomly" value="King Randomly" /></td>
+					</tr>
+					<tr>
+						<td><input onclick="removeimg()" id="btnClear" type="button"
+							name="clear" value="Clear" /></td>
+					</tr>
+				</table>
+			</td>
+
+			<td id="content">
+				<!-- Your code here -->
+			</td>
+		</tr>
+		
+		</table>
+		
+
+		<p id="opponent"></p>
+
+
+		<img src="red-piece.png" id="red1">;
+		<img src="red-piece.png" id="red2">;
+		<img src="red-piece.png" id="red3">;
+
+
+		<img src="red-piece.png" id="red4">;
+
+		<img src="red-piece.png" id="red5">;
+
+
+		<img src="red-piece.png" id="red6">;
+
+
+		<img src="red-piece.png" id="red7">;
+
+
+		<img src="red-piece.png" id="red8">;
+
+
+
+		<img src="black-piece.png" id="black1">;
+
+
+		<img src="black-piece.png" id="black2">; 
+		<img src="black-piece.png" id="black3">;
+		<img src="black-piece.png" id="black4">;
+		<img src="black-piece.png" id="black5">;
+		<img src="black-piece.png" id="black6">;
+		<img src="black-piece.png" id="black7">;
+		<img src="black-piece.png" id="black8">;
+
+
+	
+
+		<div class="checker"></div>
+		
+	
+</body>
+
+</html>
